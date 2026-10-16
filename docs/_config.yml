@@ -2,7 +2,7 @@ title: tfctl
 description: A thin wrapper around Terraform that makes managing environments easier.
 theme: just-the-docs
 url: https://javadebadi.github.io
-baseurl: /tfcli
+baseurl: /tfctl
 plugins:
   - jekyll-relative-links
 relative_links:
@@ -10,5 +10,5 @@ relative_links:
   collections: false
 # Pages that show ${{ ... }} (GitHub Actions) in code set render_with_liquid: false.
 aux_links:
-  "View on GitHub": "https://github.com/javadebadi/tfcli"
+  "View on GitHub": "https://github.com/javadebadi/tfctl"
 exclude: [Gemfile, Gemfile.lock, vendor]

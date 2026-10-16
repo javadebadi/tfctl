@@ -1,6 +1,6 @@
 # tfctl
 
-**New here? Read the [tutorial](https://javadebadi.github.io/tfcli/).** This page is the reference.
+**New here? Read the [tutorial](https://javadebadi.github.io/tfctl/).** This page is the reference.
 
 tfctl is a thin wrapper around Terraform that makes managing environments (prod, staging, dev, ...) easier. You describe each environment once in an `infra.yaml` file (its cloud, its state bucket, its variables) and then run `tfctl plan --env prod` instead of remembering the backend and var-file flags for each.
 
@@ -15,7 +15,7 @@ Before every command that takes `--env`, tfctl:
 Once per computer; every project then uses the same `tfctl`:
 
 ```bash
-git clone git@github.com:javadebadi/tfcli.git && cd tfcli
+git clone git@github.com:javadebadi/tfctl.git && cd tfctl
 make local-build-install   # builds, copies to /usr/local/bin and adds zsh completion
 ```
 
@@ -82,7 +82,7 @@ URL=$(tfctl raw-output --env prod backend_url)
 ## Layout
 
 ```
-docs/                 the tutorial, published at https://javadebadi.github.io/tfcli/
+docs/                 the tutorial, published at https://javadebadi.github.io/tfctl/
 cmd.go                the commands and flags
 config.go             infra.yaml: finding, parsing and validating it
 tfvars.go             writing <env>.tfvars and checking it against the variable blocks

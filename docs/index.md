@@ -33,5 +33,5 @@ Read the pages in order the first time; each one builds on the previous one.
 | 5 | [GCP and AWS](05-gcp-and-aws.md) | what tfctl does differently on each cloud |
 | 6 | [Troubleshooting](06-troubleshooting.md) | the errors you will meet, what they mean, the fix |
 
-The [README](https://github.com/javadebadi/tfcli#readme) is the reference; these
+The [README](https://github.com/javadebadi/tfctl#readme) is the reference; these
 pages are the walkthrough.

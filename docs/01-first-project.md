@@ -23,8 +23,8 @@ and create its infrastructure.
 Once per computer, not per project:
 
 ```bash
-git clone git@github.com:javadebadi/tfcli.git
-cd tfcli
+git clone git@github.com:javadebadi/tfctl.git
+cd tfctl
 make local-build-install
 ```
 

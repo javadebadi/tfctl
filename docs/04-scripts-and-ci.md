@@ -84,8 +84,8 @@ jobs:
       - uses: hashicorp/setup-terraform@v3
       - name: Install tfctl
         run: |
-          git clone --depth 1 https://github.com/javadebadi/tfcli "$RUNNER_TEMP/tfcli"
-          (cd "$RUNNER_TEMP/tfcli" && go build -o "$HOME/bin/tfctl" .)
+          git clone --depth 1 https://github.com/javadebadi/tfctl "$RUNNER_TEMP/tfctl"
+          (cd "$RUNNER_TEMP/tfctl" && go build -o "$HOME/bin/tfctl" .)
           echo "$HOME/bin" >> "$GITHUB_PATH"
       - run: tfctl validate-config
       - run: tfctl fmt --check
