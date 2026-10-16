@@ -6,11 +6,9 @@ All notable changes to this project are listed here. The format follows
 
 ## [0.1.0] - 2026-10-16
 
-The first version that replaces the `infra.*` tasks of invoke-tasks.
-
 ### Added
 
-- Every command of the invoke tasks: `apply`, `destroy`, `refresh`, `output`,
+- The commands `apply`, `destroy`, `refresh`, `output`,
   `raw-output`, `show`, `import`, `state list|show|mv|rm`,
   `workspace list|show|new|select|delete`, `providers`, `graph`, `console`,
   `force-unlock`, `get`, `fmt`, `validate-config`, `backend-bucket-name` and

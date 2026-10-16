@@ -2,7 +2,7 @@
 
 **New here? Read the [tutorial](https://javadebadi.github.io/tfcli/).** This page is the reference.
 
-A CLI for running Terraform against the environments described in an `infra.yaml` file. It replaces the `infra.*` tasks of [invoke-tasks](https://github.com/Human-Knowledge-Graph/invoke-tasks).
+A CLI for running Terraform against the environments described in an `infra.yaml` file.
 
 Before every command that takes `--env`, tfctl:
 

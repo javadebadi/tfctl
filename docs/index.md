@@ -32,7 +32,6 @@ Read the pages in order the first time; each one builds on the previous one.
 | 4 | [Scripts and CI](04-scripts-and-ci.md) | capturing an output, exit codes, checks for a pipeline |
 | 5 | [GCP and AWS](05-gcp-and-aws.md) | what tfctl does differently on each cloud |
 | 6 | [Troubleshooting](06-troubleshooting.md) | the errors you will meet, what they mean, the fix |
-| 7 | [Moving from invoke-tasks](07-migrating-from-invoke-tasks.md) | the old `invoke infra.*` tasks and their tfctl commands |
 
 The [README](https://github.com/javadebadi/tfcli#readme) is the reference; these
 pages are the walkthrough.
