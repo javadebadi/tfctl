@@ -2,51 +2,55 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
+func tfInitArgs(c Config, env string) ([]string, error) {
+	bucket, ok := c.BackendBuckets[env]
+	if !ok {
+		return nil, fmt.Errorf("no bucket info for env %v", env)
+	}
+
+	args := []string{
+		"-input=false",
+		"-upgrade",
+		"-reconfigure",
+		fmt.Sprintf("-backend-config=bucket=%s", bucket.BucketName),
+	}
+
+	switch bucket.HostedOn {
+	case GCP:
+		args = append(args, "-backend-config=prefix=terraform/state")
+	case AWS:
+		args = append(args, "-backend-config=key=terraform/state")
+		if bucket.Region != "" {
+			args = append(args, fmt.Sprintf("-backend-config=region=%s", bucket.Region))
+		}
+	}
+	return args, nil
+}
+
+// tfInit runs terraform init with the backend config of env. Its output goes
+// to stderr so the stdout of the command that follows (e.g. output -raw)
+// stays clean enough to capture.
 func tfInit(c Config, env string) error {
-	bucketName, err := c.getBackendBucket(env)
+	args, err := tfInitArgs(c, env)
 	if err != nil {
 		return err
 	}
-
-	args := []string{
-		"--upgrade",
-		"-reconfigure",
-		fmt.Sprintf("-backend-config=bucket=%s", bucketName),
-	}
-
-	if c.Envs[env].HostedOn == GCP {
-		args = append(args, "-backend-config=prefix=terraform/state")
-	}
-
-	return runTerraform(c, env, "init", args...)
+	return runTerraformTo(c, env, os.Stderr, "init", args...)
 }
 
-func tfPlan(c Config, env string) error {
-	args := []string{
-		"-input=false",
-		fmt.Sprintf("-var-file=%s", getEnvVarsFileName(env)),
+func tfFmt(dir string, check bool) error {
+	args := []string{"fmt", "-recursive"}
+	if check {
+		// to check autoformat is run (can be used in CI pipelines)
+		args = append(args, "-check", "-diff")
 	}
-	return runTerraform(c, env, "plan", args...)
+	return command{name: "terraform", args: args, dir: dir}.run()
 }
 
-func tfValidate(c Config, env string) error {
-	return runTerraform(c, env, "validate")
-}
-
-func tfAutoformat(c Config, env string) error {
-	args := []string{
-		"-recursive",
-	}
-	return runTerraform(c, env, "fmt", args...)
-}
-
-func tfCheckAutoformat(c Config, env string) error {
-	// to check autoformat is run (can be used in CI pipelines)
-	args := []string{
-		"-recursive",
-		"-check",
-	}
-	return runTerraform(c, env, "fmt", args...)
+// tfGet downloads and updates modules without touching the backend
+func tfGet(c Config, env string) error {
+	return runTerraform(c, env, "get", "-update")
 }
