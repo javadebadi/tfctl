@@ -1,5 +1,5 @@
 title: tfctl
-description: Run Terraform against the environments of an infra.yaml file.
+description: A thin wrapper around Terraform that makes managing environments easier.
 theme: just-the-docs
 url: https://javadebadi.github.io
 baseurl: /tfcli

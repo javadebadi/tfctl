@@ -8,8 +8,8 @@ permalink: /
 
 # tfctl tutorial
 
-tfctl runs Terraform for you, one environment at a time. You describe your
-environments once, in a file called `infra.yaml`: which cloud each one is on,
+tfctl is a thin wrapper around Terraform that makes managing environments
+(prod, staging, dev, ...) easier. You describe your environments once, in a file called `infra.yaml`: which cloud each one is on,
 where its Terraform state is kept, and the values of its Terraform variables.
 After that, `tfctl plan --env prod` does everything that a bare `terraform plan`
 would leave to you:

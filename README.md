@@ -2,7 +2,7 @@
 
 **New here? Read the [tutorial](https://javadebadi.github.io/tfcli/).** This page is the reference.
 
-A CLI for running Terraform against the environments described in an `infra.yaml` file.
+tfctl is a thin wrapper around Terraform that makes managing environments (prod, staging, dev, ...) easier. You describe each environment once in an `infra.yaml` file (its cloud, its state bucket, its variables) and then run `tfctl plan --env prod` instead of remembering the backend and var-file flags for each.
 
 Before every command that takes `--env`, tfctl:
 
